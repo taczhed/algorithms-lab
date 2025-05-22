@@ -1,6 +1,5 @@
-from labs.lab01 import lcm
+from labs.lab02 import sieve_of_eratosthenes
 
-print("--- Euclidean algorithm (Least common multiple) ---")
-a = int(input('--- Enter number a: '))
-b = int(input('--- Enter number b: '))
-print("--- Result is: " + str(lcm(a, b)) + " ---")
+print("--- Sieve of Eratosthenes ---")
+n = int(input('--- Enter number n: '))
+print("--- Result is: " + str(sieve_of_eratosthenes(n)) + " ---")
