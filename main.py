@@ -1,13 +1,14 @@
-from labs.lab03 import determinant
+from labs.lab04 import root_bisection
 
-print("--- Matrix Determinant (recursive) ---")
-n = int(input("--- Enter the size of the matrix (n for n x n): "))
-matrix = []
-print("--- Enter the rows of the matrix (separate numbers with spaces):")
-for i in range(n):
-    row = list(map(float, input(f"--Row {i + 1}: ").split()))
-    if len(row) != n:
-        raise ValueError("--Each row must have exactly n elements.")
-    matrix.append(row)
-result = determinant(matrix)
-print("--- Result:", result)
+print("--- Root of 5th-Degree Polynomial ---")
+print("--- Enter polynomial coefficients from x^0 to x^5 (space separated):")
+coeffs = list(map(float, input("-- Coefficients: ").split()))
+if len(coeffs) != 6:
+    raise ValueError("-- Polynomial must have exactly 6 coefficients (degree 5).")
+
+a = float(input("-- Interval start (a): "))
+b = float(input("-- Interval end (b): "))
+eps = float(input("-- Precision (e.g. 0.0001): "))
+
+result = root_bisection(coeffs, a, b, eps)
+print("--- Root found:", result)
