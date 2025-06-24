@@ -1,14 +1,22 @@
-from labs.lab04 import root_bisection
+from labs.lab05 import monte_carlo_integration
+import math
 
-print("--- Root of 5th-Degree Polynomial ---")
-print("--- Enter polynomial coefficients from x^0 to x^5 (space separated):")
-coeffs = list(map(float, input("-- Coefficients: ").split()))
-if len(coeffs) != 6:
-    raise ValueError("-- Polynomial must have exactly 6 coefficients (degree 5).")
+print("--- Monte Carlo Integration ---")
+print("--- Enter function to integrate (e.g. 'math.sin(x)', 'x**2 + 1')")
 
+expr = input("-- Function f(x): ")
 a = float(input("-- Interval start (a): "))
 b = float(input("-- Interval end (b): "))
-eps = float(input("-- Precision (e.g. 0.0001): "))
+n = int(input("-- Number of samples: "))
 
-result = root_bisection(coeffs, a, b, eps)
-print("--- Root found:", result)
+# Define the function from user input
+def f(x):
+    return eval(expr, {"x": x, "math": math})
+
+result = monte_carlo_integration(f, a, b, n)
+print("--- Approximated integral:", result)
+
+# abs(math.sin(x)+math.sin(2*x)+math.sin(4*x)+math.sin(8*x))
+# 0
+# 6.283185
+# 1000000
